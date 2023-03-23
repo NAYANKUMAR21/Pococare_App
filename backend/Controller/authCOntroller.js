@@ -3,14 +3,10 @@ const authModel = require('../Models/auth.model');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 function refreshToken(req, res) {
-  const { refreshToken } = req.body;
-  if (!refreshToken) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
   const token = jwt.sign(
-    { id: checkUser.name, email: checkUser.email },
+    { id: req.user.name, email: req.user.email },
     process.env.JWT_TOKEN_KEY,
-    { expiresIn: '1h' }
+    { expiresIn: '10000ms' }
   );
   return res
     .status(200)
@@ -25,7 +21,7 @@ async function login(req, res) {
       const token = jwt.sign(
         { id: checkUser.name, email: checkUser.email },
         process.env.JWT_TOKEN_KEY,
-        { expiresIn: '1h' }
+        { expiresIn: '10000ms' }
       );
       const refreshToken = jwt.sign(
         { id: checkUser.name, email: checkUser.email },
