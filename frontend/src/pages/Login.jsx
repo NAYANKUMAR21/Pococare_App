@@ -71,6 +71,7 @@ const Login = () => {
                   id="email"
                   type="text"
                   name="email"
+                  value={cred.email}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -80,6 +81,7 @@ const Login = () => {
                   id="email"
                   type="password"
                   name="password"
+                  value={cred.password}
                   onChange={handleChange}
                 />
               </FormControl>

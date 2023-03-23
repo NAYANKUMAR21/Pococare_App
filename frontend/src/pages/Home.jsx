@@ -24,11 +24,13 @@ const Home = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.product);
   console.log(localStorage.getItem('errorToken'), state);
-  if (localStorage.getItem('errorToken') == 'true') {
-    dispatch(refreshToken());
-  }
+  // if (localStorage.getItem('errorToken') == 'true') {
+  //   dispatch(refreshToken());
+  // }
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProducts()).then((res) => {
+      dispatch(refreshToken()).then((res) => dispatch(getProducts()));
+    });
   }, []);
   return (
     <React.Fragment>

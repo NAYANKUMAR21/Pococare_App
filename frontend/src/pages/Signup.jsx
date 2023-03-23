@@ -70,6 +70,7 @@ const Signup = () => {
                 <Input
                   id="email"
                   type="text"
+                  value={cred.name}
                   name="name"
                   onChange={handleChange}
                 />
@@ -80,6 +81,7 @@ const Signup = () => {
                   id="email"
                   type="email"
                   name="email"
+                  value={cred.email}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -89,6 +91,7 @@ const Signup = () => {
                   id="email"
                   type="password"
                   name="password"
+                  value={cred.password}
                   onChange={handleChange}
                 />
               </FormControl>

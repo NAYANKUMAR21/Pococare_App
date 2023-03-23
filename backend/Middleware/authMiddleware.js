@@ -17,7 +17,7 @@ async function authMiddleware(req, res, next) {
     return res.status(401).send({ error: 'Unauthorized Error' });
   }
 }
-async function authRefreshTokenMiddleware() {
+async function authRefreshTokenMiddleware(req, res, next) {
   const token = req.headers['authorization'];
   console.log(token, '2175e1235218387213'); //debug
   if (!token) {
