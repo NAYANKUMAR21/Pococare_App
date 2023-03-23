@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/auth/auth.action';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, NavLink } from 'react-router-dom';
 
 const Signup = () => {
   const [cred, setCred] = useState({
@@ -49,9 +49,11 @@ const Signup = () => {
             </Heading>
             <HStack spacing="1" justify="center">
               <Text color="muted">Don't have an account?</Text>
-              <Button variant="link" colorScheme="blue">
-                Sign up
-              </Button>
+              <Box color={'blue.400'} fontSize="xl">
+                <NavLink colorScheme="blue" to="/login">
+                  Log In
+                </NavLink>
+              </Box>
             </HStack>
           </Stack>
         </Stack>
