@@ -6,7 +6,7 @@ function refreshToken(req, res) {
   const token = jwt.sign(
     { id: req.user.name, email: req.user.email },
     process.env.JWT_TOKEN_KEY,
-    { expiresIn: '10000ms' }
+    { expiresIn: '1d' }
   );
   return res
     .status(200)
@@ -21,12 +21,12 @@ async function login(req, res) {
       const token = jwt.sign(
         { id: checkUser.name, email: checkUser.email },
         process.env.JWT_TOKEN_KEY,
-        { expiresIn: '10000ms' }
+        { expiresIn: '1d' }
       );
       const refreshToken = jwt.sign(
         { id: checkUser.name, email: checkUser.email },
         process.env.REFRESH_JWT_TOKEN_KEY,
-        { expiresIn: '24h' }
+        { expiresIn: '7d' }
       );
       return res
         .status(200)
