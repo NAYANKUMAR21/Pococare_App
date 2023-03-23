@@ -56,4 +56,6 @@ async function signup(req, res) {
     return res.status(404).send(er.message);
   }
 }
+async function logout() {}
+
 module.exports = { login, signup, refreshToken };
