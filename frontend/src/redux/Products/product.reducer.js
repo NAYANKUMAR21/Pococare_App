@@ -12,7 +12,7 @@ let initialState = {
   data: [],
   totalProducts: 0,
 };
-const productReducer = (state = initialState, { type, payload }) => {
+export const productReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_PRODUCT_LOADING: {
       return {
@@ -48,5 +48,3 @@ const productReducer = (state = initialState, { type, payload }) => {
     }
   }
 };
-
-export default productReducer;

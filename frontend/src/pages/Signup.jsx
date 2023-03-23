@@ -30,7 +30,6 @@ const Signup = () => {
     setCred({ ...cred, [name]: value });
   };
   const handleClick = () => {
-    console.log(cred);
     dispatch(registerUser(cred));
   };
   if (state.isRegistered) {

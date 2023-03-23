@@ -16,20 +16,22 @@ import { PriceTag } from './PriceTag';
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, imageUrl, price, salePrice, rating } = product;
+
+  const { title, imageUrl, image, price, salePrice, rating, quantity } =
+    product;
   return (
     <Stack
       spacing={{
         base: '4',
-        md: '5',
+        md: '3',
       }}
       {...rootProps}
     >
       <Box position="relative">
         <AspectRatio ratio={4 / 3}>
           <Image
-            src={imageUrl}
-            alt={name}
+            src={image}
+            alt={title}
             draggable="false"
             fallback={<Skeleton />}
             borderRadius={{
@@ -42,7 +44,7 @@ export const ProductCard = (props) => {
           position="absolute"
           top="4"
           right="4"
-          aria-label={`Add ${name} to your favourites`}
+          aria-label={`Add ${title} to your favourites`}
         />
       </Box>
       <Stack>
@@ -51,12 +53,12 @@ export const ProductCard = (props) => {
             fontWeight="medium"
             color={useColorModeValue('gray.700', 'gray.400')}
           >
-            {name}
+            {title.substr(0, 10)}
           </Text>
-          <PriceTag price={price} salePrice={salePrice} currency="USD" />
+          <PriceTag price={quantity} salePrice={quantity} currency="USD" />
         </Stack>
         <HStack>
-          <Rating defaultValue={rating} size="sm" />
+          <Rating defaultValue={3} size="sm" />
           <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
             12 Reviews
           </Text>

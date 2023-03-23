@@ -12,11 +12,10 @@ export const registerUser = (creds) => async (dispatch) => {
   try {
     const res = await axios.post(`${API}/auth/signup`, creds);
     const data = await res.data;
-    console.log(data);
-    dispatch({ type: AUTH_REGISTER_SUCCESS, payload: data });
+
+    return dispatch({ type: AUTH_REGISTER_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: AUTH_ERROR });
-    console.log(error.message);
+    return dispatch({ type: AUTH_ERROR });
   }
 };
 
@@ -24,7 +23,6 @@ export const loginUser = (creds) => async (dispatch) => {
   try {
     const res = await axios.post(`${API}/auth/login`, creds);
     const data = await res.data;
-    console.log(data);
 
     localStorage.setItem('token', data.token);
     localStorage.setItem('refreshToken', data.refreshToken);
@@ -42,11 +40,10 @@ export const refreshToken = () => async (state, dispatch) => {
         authorization: localStorage.getItem('refreshToken'),
       },
     });
-    console.log('refersh', refresh_Token.data.token);
+
     localStorage.setItem('token', refresh_Token.data.token);
     return dispatch({ type: REFRESH_TOKEN_SUCCESS });
   } catch (er) {
-    console.log(er.message);
-    dispatch({ type: REFRESH_TOKEN_ERROR });
+    return dispatch({ type: REFRESH_TOKEN_ERROR });
   }
 };

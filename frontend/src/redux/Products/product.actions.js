@@ -1,36 +1,30 @@
 import axios from 'axios';
-import { refreshToken } from '../auth/auth.action';
+
 import {
   GET_PRODUCT_LOADING,
   GET_PRODUCT_SUCCESS,
   GET_PRODUCT_ERROR,
-  REFRESH_TOKEN_LOADING,
-  REFRESH_TOKEN_SUCCESS,
   GET_SINGLE,
 } from './product.type';
 let API = 'http://localhost:8080';
-export const getProducts = () => async (state, dispatch) => {
+export const getProducts = () => async (dispatch, state) => {
   dispatch({ type: GET_PRODUCT_LOADING });
   try {
-    console.log(localStorage.getItem('token'));
-
-    const getAll = await axios.get(`${API}/product`, {
+    const res = await axios.get(`${API}/product`, {
       headers: {
         authorization: localStorage.getItem('token'),
       },
     });
 
-    return dispatch({ type: GET_PRODUCT_SUCCESS, payload: getAll.data });
+    return dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
   } catch (er) {
     localStorage.setItem('errorToken', true);
     return dispatch({ type: GET_PRODUCT_ERROR });
   }
 };
-export const getSingleProduct = (id) => async (state, dispatch) => {
+export const getSingleProduct = (id) => async (dispatch, state) => {
   dispatch({ type: GET_PRODUCT_LOADING });
   try {
-    console.log(localStorage.getItem('token'));
-
     const getAll = await axios.get(`${API}/product/${id}`, {
       headers: {
         authorization: localStorage.getItem('token'),

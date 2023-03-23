@@ -29,8 +29,6 @@ const Login = () => {
     setCred({ ...cred, [name]: value });
   };
   const handleClick = () => {
-    console.log(cred);
-
     dispatch(loginUser(cred));
   };
   if (state.isAuth) {
