@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getProducts()).then((res) => {
-      dispatch(refreshToken()).then((res) => dispatch(getProducts()));
+      dispatch(refreshToken());
     });
   }, []);
   if (state.loading) {

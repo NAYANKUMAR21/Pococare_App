@@ -6,7 +6,7 @@ import {
   GET_PRODUCT_ERROR,
   GET_SINGLE,
 } from './product.type';
-let API = 'http://localhost:8080';
+let API = 'https://pococare-m9k2.onrender.com';
 export const getProducts = () => async (dispatch, state) => {
   dispatch({ type: GET_PRODUCT_LOADING });
   try {

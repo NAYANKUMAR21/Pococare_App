@@ -7,7 +7,7 @@ import {
   REFRESH_TOKEN_LOADING,
   REFRESH_TOKEN_SUCCESS,
 } from './auth.type';
-let API = 'http://localhost:8080';
+let API = 'https://pococare-m9k2.onrender.com';
 export const registerUser = (creds) => async (dispatch) => {
   try {
     const res = await axios.post(`${API}/auth/signup`, creds);
